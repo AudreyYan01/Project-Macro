@@ -1,0 +1,16 @@
+# Core dependencies
+streamlit>=1.28.0
+pandas>=2.0.0
+plotly>=5.17.0
+
+# FRED API
+fredapi>=0.5.1
+
+# Data processing
+numpy>=1.24.0
+
+# Environment variables (optional)
+python-dotenv>=1.0.0
+
+# Auto-refresh support (optional)
+streamlit-autorefresh>=0.1.0
