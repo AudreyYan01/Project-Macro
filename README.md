@@ -1,182 +1,152 @@
-**Happy Analyzing!** 📊📈
-
 # Macro Signal Monitor
 
-A lightweight macro monitoring dashboard built with Python, Streamlit, and FRED data.
+A lightweight macro monitoring tool built using FRED data and AI-assisted coding, designed for tracking key economic signals for decision support.
 
-I built this project in one afternoon primarily to learn AI-assisted coding by turning a real monitoring need into a usable internal tool. It tracks a curated set of macroeconomic indicators I wanted to follow in one place and serves as an early prototype of a decision-support workflow rather than a full investment product.
+---
 
-## Why this project matters
+## Why it matters
 
-This project matters less as a polished market tool and more as evidence of how I work:
+**Macro Signal Monitor** is a lightweight dashboard I built using FRED data to track a curated set of macroeconomic indicators.
 
-- **From thinking to building:** I translated an idea I had been carrying for a while into a working product.
-- **AI-assisted rapid prototyping:** I used AI coding tools to accelerate implementation and learn by shipping.
-- **Signal organization:** I selected and grouped indicators into a lower-friction monitoring workflow instead of relying on scattered sources.
-- **Builder proof point:** The project shows that I can integrate external APIs, structure data into usable categories, and create a functional interface end-to-end.
+I developed it as a rapid prototype using AI-assisted coding tools to turn a loosely defined monitoring need into a usable internal tool.
+
+The project demonstrates my ability to structure signals, integrate external data, and quickly build decision-oriented workflows.
+
+This project matters not because it is a sophisticated macro investment tool, but because it demonstrates a shift in how I work:
+
+- **From thinking → building**
+  I had long wanted a simple way to monitor a curated set of macroeconomic indicators. This project is the first time I translated that idea into a working product.
+
+- **From passive consumption → structured signal tracking**
+  Instead of browsing scattered sources (FRED, articles, dashboards), I defined a small set of indicators that I believe are worth consistently tracking, and organized them into a single, low-friction interface.
+
+- **From no-code → AI-assisted coding**
+  I built this in one afternoon using AI coding tools. The goal was not perfection, but to learn how to turn a real-world monitoring need into a functional data product quickly.
+
+- **Early proof of "builder" capability**
+  This project is a concrete example that I can integrate external APIs, structure data into meaningful categories, design a usable interface for scanning information, and ship a working tool end-to-end.
+
+> In short, this is about **developing the ability to productize ideas into usable systems.**
+
+---
 
 ## What it does
 
-The dashboard helps users monitor a selected set of macroeconomic indicators from FRED in one place.
+- Fetches live data directly from the FRED API (cached hourly)
+- Groups 24 indicators into 5 macro themes for structured scanning
+- Shows headline metrics (10 key indicators) at a glance with period-over-period deltas
+- Displays interactive time-series charts with per-chart definitions and recession shading
+- Supports quick date presets (1Y, 5Y, 10Y, all) and custom date ranges
+- Exports the currently selected data as CSV
 
-Core capabilities include:
-
-- Fetching recent data directly from the FRED API
-- Grouping indicators by macro theme
-- Supporting quick date presets and custom date ranges
-- Displaying latest values and recent changes
-- Visualizing multiple indicators interactively
-- Highlighting recession periods for historical context
-- Exporting the currently selected data as CSV
+---
 
 ## Indicators tracked
 
-### Inflation & Prices
-- Core CPI (excluding Food & Energy)
+### 1. Monetary Policy & Rates
+| Indicator | FRED ID | Notes |
+|---|---|---|
+| Federal Funds Rate | `FEDFUNDS` | The Fed's primary policy rate |
+| Real Interest Rate (10Y) | `REAINTRATREARAT10Y` | Nominal yield minus inflation expectations |
+| 10Y–2Y Treasury Spread | `T10Y2Y` | Most-watched yield curve inversion signal |
+| 10Y–3M Treasury Spread | `T10Y3MM` | Academically preferred recession predictor |
+| M2 Money Supply | `M2SL` | Broad money supply |
+| Fed Balance Sheet | `WALCL` | Total Fed assets; expands in QE, shrinks in QT |
 
-### Interest Rates
-- Federal Funds Rate
-- 10Y-3M Treasury Spread
-- Real Interest Rate (10Y)
+### 2. Growth & Inflation
+| Indicator | FRED ID | Notes |
+|---|---|---|
+| Gross Domestic Product | `GDP` | Shown as YoY growth rate |
+| Core PCE Price Index | `PCEPILFE` | **Fed's actual 2% inflation target**; shown as YoY |
+| Core CPI (ex Food & Energy) | `CPILFENS` | Public headline inflation measure; shown as YoY |
+| 10Y Breakeven Inflation Rate | `T10YIE` | Market-implied inflation expectations |
+| Capacity Utilization: Manufacturing | `MCUMFN` | Upstream demand and inflation pressure indicator |
 
-### Economic Output
-- Gross Domestic Product (GDP)
-- Capacity Utilization: Manufacturing
+### 3. Labor Market
+| Indicator | FRED ID | Notes |
+|---|---|---|
+| Unemployment Rate | `UNRATE` | Primary labor market slack measure |
+| Nonfarm Payrolls | `PAYEMS` | Most-watched monthly jobs release |
+| JOLTS Job Openings | `JTSJOL` | Labor demand; closely monitored by the Fed |
+| Wages (Median Weekly Earnings) | `LES1252881600Q` | Real compensation and consumer purchasing power |
+| Labor Share — Nonfarm Business | `PRS85006171` | Whether workers capture productivity gains |
+| Indeed Job Postings: Software Dev | `IHLIDXUSTPSOFTDEVE` | Real-time tech sector hiring demand |
 
-### Labor Market
-- Unemployment Rate
-- Labor Share of GDP
-- Nonfarm Business Labor Share
-- Wages
+### 4. Markets & Financial Risk
+| Indicator | FRED ID | Notes |
+|---|---|---|
+| S&P 500 | `SP500` | Broad U.S. equity benchmark |
+| VIX (Market Volatility) | `VIXCLS` | Market "fear gauge" |
+| High Yield Credit Spread | `BAMLH0A0HYM2` | Junk bond premium; spikes in credit stress |
+| Baa Corporate Spread | `BAA10Y` | Investment-grade credit risk |
+| St. Louis Financial Stress Index | `STLFSI4` | Composite financial market stress indicator |
 
-### Housing
-- New Housing Units Authorized (Building Permits)
+### 5. Business & Housing
+| Indicator | FRED ID | Notes |
+|---|---|---|
+| Corporate Profits After Tax | `A466RD3Q052SBEA` | Economy-wide profit health; billions of dollars SAAR |
+| New Housing Units Authorized | `PERMIT` | Leading indicator of residential construction |
 
-### Financial Markets
-- S&P 500
-- VIX (Market Volatility Index)
-
-### Credit & Spreads
-- High Yield Credit Spread
-- Baa Corporate Bond Spread
-
-### Corporate Performance
-- Corporate Profits After Tax
-
-### Financial Conditions
-- St Louis Financial Stress Index
-- Nonfinancial Leverage Index
-
-### Monetary Indicators
-- M2 Money Supply
-- Federal Reserve Balance Sheet
-
-## Why I chose these indicators
-
-I chose these indicators because they are useful for regularly scanning broad macro conditions across inflation, rates, growth, labor, credit, and financial conditions. The goal was not to build a complete macro model, but to create a practical monitoring set that reduces friction in keeping track of signals that matter.
+---
 
 ## Tech stack
 
-- Python
-- Streamlit
-- Plotly
-- Pandas
-- `fredapi`
+| Layer | Tools |
+|---|---|
+| Language | Python 3.8+ |
+| App framework | Streamlit |
+| Charts | Plotly |
+| Data | `fredapi`, Pandas |
+| Secrets | `python-dotenv` (local), Streamlit secrets (cloud) |
 
-## Project structure
-
-```text
-FRED Data Dashboard/
-├── app.py                      # Main Streamlit dashboard application
-├── src/
-│   └── fred_api.py            # FRED API interaction module
-├── data/                       # Downloaded data cache (auto-generated)
-├── requirements.txt           # Python dependencies
-├── .env.example              # Example environment file
-├── .gitignore               # Git ignore rules
-└── README.md                # This file
-```
+---
 
 ## Setup
 
 ### Prerequisites
-- Python 3.8 or higher
-- FRED API key
+- Python 3.8+
+- A free FRED API key — get one at [fred.stlouisfed.org/docs/api/api_key.html](https://fred.stlouisfed.org/docs/api/api_key.html)
 
-### Step 1: Get a FRED API Key
-
-1. Go to [https://fred.stlouisfed.org](https://fred.stlouisfed.org)
-2. Create a free account or log in
-3. Request an API key at [https://fred.stlouisfed.org/docs/api/api_key.html](https://fred.stlouisfed.org/docs/api/api_key.html)
-4. Your API key will be emailed to you
-
-### Step 2: Install dependencies
+### Run locally
 
 ```bash
+# 1. Clone the repo
+git clone https://github.com/YOUR_USERNAME/fred-data-dashboard.git
+cd fred-data-dashboard
+
+# 2. Install dependencies
 pip install -r requirements.txt
-```
 
-Or use a virtual environment:
+# 3. Set your API key
+cp .env.example .env
+# Edit .env and add your key: FRED_API_KEY=your_key_here
 
-```bash
-python -m venv venv
-source venv/bin/activate
-pip install -r requirements.txt
-```
-
-### Step 3: Run the dashboard
-
-```bash
+# 4. Launch
 streamlit run app.py
 ```
 
-The dashboard will open in your browser at `http://localhost:8501`.
+The dashboard opens at `http://localhost:8501`.
 
-## Example workflow
+### Deploy to Streamlit Cloud
 
-A typical use case is:
+1. Push this repo to GitHub
+2. Go to [share.streamlit.io](https://share.streamlit.io) → connect your repo → set `app.py` as the entry point
+3. Under **Advanced settings → Secrets**, add:
+```toml
+FRED_API_KEY = "your_key_here"
+```
+4. Deploy — the app will be live at `your-app.streamlit.app`
 
-1. Select a time range
-2. Choose indicators across themes such as inflation, labor, rates, and credit
-3. Scan recent values and directional changes
-4. Compare chart behavior across time periods and recession windows
-5. Export the data if deeper analysis is needed elsewhere
-
-## What I learned
-
-- AI coding tools are useful for quickly moving from concept to prototype
-- A small internal tool becomes more valuable when the signal set is intentionally curated
-- Even a lightweight dashboard benefits from clearer framing around the decision workflow it supports
-- Building something functional quickly is a good way to surface what should be improved in a second version
+---
 
 ## Limitations
 
-- This is a lightweight monitoring tool, not a full investment decision engine
-- Indicator interpretation is still left to the user
-- There is no alerting, summarization, or decision journal layer yet
-- The current version prioritizes usability and speed over deeper analytical functionality
+- Lightweight monitoring tool, not a full investment decision engine
+- Indicator interpretation is left to the user
+- No alerting, AI-generated summaries, or decision journal layer yet
 
-## Potential next steps
-
-- Add indicator notes explaining why each signal matters
-- Add rule-based summaries or simple regime labels
-- Improve modularization of the data and UI layers
-- Add a lightweight decision journal or watchlist feature
-- Optionally add AI-generated summaries in a future version
+---
 
 ## Data source
 
-All data comes from the Federal Reserve Economic Data (FRED) database maintained by the Federal Reserve Bank of St. Louis.
-
-- FRED Website: [https://fred.stlouisfed.org](https://fred.stlouisfed.org)
-- FRED API Documentation: [https://fred.stlouisfed.org/docs/api/](https://fred.stlouisfed.org/docs/api/)
-
-## Credits
-
-Built with:
-- [Streamlit](https://streamlit.io/)
-- [Plotly](https://plotly.com/python/)
-- [fredapi](https://github.com/mortada/fredapi)
-- [Pandas](https://pandas.pydata.org/)
-
-Data provided by Federal Reserve Economic Data (FRED), Federal Reserve Bank of St. Louis.
+All data is sourced from the [Federal Reserve Economic Data (FRED)](https://fred.stlouisfed.org) database, maintained by the Federal Reserve Bank of St. Louis.
