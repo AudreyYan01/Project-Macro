@@ -76,6 +76,27 @@ The dashboard organizes indicators into five macro themes:
 
 ---
 
+## Screenshots
+
+**Key Indicators — headline metrics at a glance**
+![Key Indicators](Screenshots/image1.png)
+
+**Time Series: Monetary Policy & Rates**
+![Monetary Policy & Rates](Screenshots/image2.png)
+
+**Time Series: Growth & Inflation**
+![Growth & Inflation](Screenshots/image3.png)
+
+**Time Series: Labor Market**
+![Labor Market](Screenshots/image4.png)
+
+**Time Series: Markets & Financial Risk**
+![Markets & Financial Risk](Screenshots/image5.png)
+
+**Time Series: Business & Housing**
+![Business & Housing](Screenshots/image6.png)
+
+---
 
 ## Indicators tracked
 
