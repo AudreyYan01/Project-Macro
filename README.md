@@ -147,8 +147,8 @@ The dashboard organizes indicators into five macro themes:
 
 ```bash
 # 1. Clone the repo
-git clone https://github.com/YOUR_USERNAME/fred-data-dashboard.git
-cd fred-data-dashboard
+git clone https://github.com/AudreyYan01/Project-Macro.git
+cd Project-Macro
 
 # 2. Install dependencies
 pip install -r requirements.txt
