@@ -1,45 +1,81 @@
-# Macro Signal Monitor
+# Project Macro
 
-A lightweight macro monitoring tool built using FRED data and AI-assisted coding, designed for tracking key economic signals for decision support.
+A lightweight macroeconomic signals dashboard that turns public FRED data into a structured monitoring interface across inflation, labor, interest rates, markets, and business conditions.
 
----
-
-## Why it matters
-
-**Macro Signal Monitor** is a lightweight dashboard I built using FRED data to track a curated set of macroeconomic indicators.
-
-I developed it as a rapid prototype using AI-assisted coding tools to turn a loosely defined monitoring need into a usable internal tool.
-
-The project demonstrates my ability to structure signals, integrate external data, and quickly build decision-oriented workflows.
-
-This project matters not because it is a sophisticated macro investment tool, but because it demonstrates a shift in how I work:
-
-- **From thinking → building**
-  I had long wanted a simple way to monitor a curated set of macroeconomic indicators. This project is the first time I translated that idea into a working product.
-
-- **From passive consumption → structured signal tracking**
-  Instead of browsing scattered sources (FRED, articles, dashboards), I defined a small set of indicators that I believe are worth consistently tracking, and organized them into a single, low-friction interface.
-
-- **From no-code → AI-assisted coding**
-  I built this in one afternoon using AI coding tools. The goal was not perfection, but to learn how to turn a real-world monitoring need into a functional data product quickly.
-
-- **Early proof of "builder" capability**
-  This project is a concrete example that I can integrate external APIs, structure data into meaningful categories, design a usable interface for scanning information, and ship a working tool end-to-end.
-
-> In short, this is about **developing the ability to productize ideas into usable systems.**
+**Live demo:** https://project-macro-nzju7gsrgshf77sfxn8f5u.streamlit.app/
 
 ---
 
-## What it does
+## Why I Built This
 
-- Fetches live data directly from the FRED API (cached hourly)
+Macroeconomic data is abundant but fragmented. FRED provides rich public data, but monitoring a focused set of indicators still requires switching across pages, charts, releases, and commentary.
+
+I built Project Macro to turn a curated set of indicators into a repeatable review workflow. The goal was not to build a forecasting model or investment engine, but to practice converting an open-ended monitoring need into a usable data product.
+
+This project demonstrates:
+
+- External API integration
+
+- Time-series data transformation
+
+- Dashboard and information design
+
+- Product framing for a loosely defined analytical workflow
+
+- Rapid prototyping and deployment
+
+---
+
+## What It Does
+
+Project Macro fetches live macroeconomic data from FRED and organizes it into a dashboard designed for quick, repeatable signal scanning.
+
+Key features include:
+
+- Fetches live data directly from the FRED API, with caching for faster reloads
+
 - Groups 24 indicators into 5 macro themes for structured scanning
-- Shows headline metrics (10 key indicators) at a glance with period-over-period deltas
-- Displays interactive time-series charts with per-chart definitions and recession shading
-- Supports quick date presets (1Y, 5Y, 10Y, all) and custom date ranges
-- Exports the currently selected data as CSV
+
+- Shows headline metrics for key indicators with latest value and period-over-period deltas
+
+- Displays interactive time-series charts with per-chart definitions
+
+- Supports time-window selection and custom date ranges
+
+- Includes YoY calculations where useful
+
+- Adds recession shading for historical context
+
+- Allows CSV export of selected data
 
 ---
+
+## Dashboard Themes
+
+The dashboard organizes indicators into five macro themes:
+
+1. **Inflation**  
+
+   Tracks price pressure and inflation trends.
+
+2. **Labor Market**  
+
+   Tracks employment, unemployment, wage, and labor-force indicators.
+
+3. **Interest Rates**  
+
+   Tracks monetary-policy and yield-curve related indicators.
+
+4. **Markets & Financial Conditions**  
+
+   Tracks market stress, financial conditions, and risk signals.
+
+5. **Business Conditions**  
+
+   Tracks broader economic activity and business-cycle indicators.
+
+---
+
 
 ## Indicators tracked
 
